@@ -1,0 +1,6 @@
+framework module Pods_Misdeed {
+  umbrella header "Pods-Misdeed-umbrella.h"
+
+  export *
+  module * { export * }
+}

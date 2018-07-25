@@ -12,9 +12,13 @@
 		8C5D7CE62107D96100BB152C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C5D7CE42107D96100BB152C /* Main.storyboard */; };
 		8C5D7CE82107D96300BB152C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C5D7CE72107D96300BB152C /* Assets.xcassets */; };
 		8C5D7CEB2107D96300BB152C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C5D7CE92107D96300BB152C /* LaunchScreen.storyboard */; };
+		8CCCF0BE2107E16F00BC8EF4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CCCF0BD2107E16E00BC8EF4 /* GoogleService-Info.plist */; };
+		BC88810240144E2CB331C4DA /* Pods_Misdeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1963D117AB959514FEDB4FB /* Pods_Misdeed.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25B46BCA28FF6E2D77F7E45F /* Pods-Misdeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Misdeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-Misdeed/Pods-Misdeed.release.xcconfig"; sourceTree = "<group>"; };
+		898733CB9AF750E46D770250 /* Pods-Misdeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Misdeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Misdeed/Pods-Misdeed.debug.xcconfig"; sourceTree = "<group>"; };
 		8C5D7CDD2107D96100BB152C /* Misdeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Misdeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C5D7CE02107D96100BB152C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C5D7CE22107D96100BB152C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		8C5D7CE72107D96300BB152C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C5D7CEA2107D96300BB152C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C5D7CEC2107D96300BB152C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CCCF0BD2107E16E00BC8EF4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D1963D117AB959514FEDB4FB /* Pods_Misdeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Misdeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC88810240144E2CB331C4DA /* Pods_Misdeed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +47,8 @@
 			children = (
 				8C5D7CDF2107D96100BB152C /* Misdeed */,
 				8C5D7CDE2107D96100BB152C /* Products */,
+				B1A3A82FABAE8D8ADC1A1F1D /* Pods */,
+				D9C9BF2008066C4CD89FFE14 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +63,96 @@
 		8C5D7CDF2107D96100BB152C /* Misdeed */ = {
 			isa = PBXGroup;
 			children = (
+				8CCCF0BC2107E0EA00BC8EF4 /* Views */,
 				8C5D7CE02107D96100BB152C /* AppDelegate.swift */,
-				8C5D7CE22107D96100BB152C /* ViewController.swift */,
-				8C5D7CE42107D96100BB152C /* Main.storyboard */,
-				8C5D7CE72107D96300BB152C /* Assets.xcassets */,
-				8C5D7CE92107D96300BB152C /* LaunchScreen.storyboard */,
+				8CCCF0B42107E09200BC8EF4 /* Controllers */,
+				8CCCF0BA2107E0D200BC8EF4 /* Supporting */,
+				8CCCF0BD2107E16E00BC8EF4 /* GoogleService-Info.plist */,
 				8C5D7CEC2107D96300BB152C /* Info.plist */,
+				8CCCF0B52107E09800BC8EF4 /* Extensions */,
+				8C5D7CE72107D96300BB152C /* Assets.xcassets */,
+				8CCCF0B92107E0C000BC8EF4 /* Storyboards */,
+				8CCCF0B82107E0BB00BC8EF4 /* Services */,
+				8CCCF0B72107E0B200BC8EF4 /* Models */,
+				8CCCF0B62107E0AA00BC8EF4 /* Helpers */,
 			);
 			path = Misdeed;
+			sourceTree = "<group>";
+		};
+		8CCCF0B42107E09200BC8EF4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C5D7CE22107D96100BB152C /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8CCCF0B52107E09800BC8EF4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8CCCF0B62107E0AA00BC8EF4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8CCCF0B72107E0B200BC8EF4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8CCCF0B82107E0BB00BC8EF4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8CCCF0B92107E0C000BC8EF4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8C5D7CE92107D96300BB152C /* LaunchScreen.storyboard */,
+				8C5D7CE42107D96100BB152C /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		8CCCF0BA2107E0D200BC8EF4 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		8CCCF0BC2107E0EA00BC8EF4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B1A3A82FABAE8D8ADC1A1F1D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				898733CB9AF750E46D770250 /* Pods-Misdeed.debug.xcconfig */,
+				25B46BCA28FF6E2D77F7E45F /* Pods-Misdeed.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D9C9BF2008066C4CD89FFE14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1963D117AB959514FEDB4FB /* Pods_Misdeed.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +162,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C5D7CEF2107D96300BB152C /* Build configuration list for PBXNativeTarget "Misdeed" */;
 			buildPhases = (
+				07D5BC5EEDCCCC6F5DA745D6 /* [CP] Check Pods Manifest.lock */,
 				8C5D7CD92107D96100BB152C /* Sources */,
 				8C5D7CDA2107D96100BB152C /* Frameworks */,
 				8C5D7CDB2107D96100BB152C /* Resources */,
+				2EE1BD044D5049ECA79BCF58 /* [CP] Embed Pods Frameworks */,
+				EFEF3EC03F6FD5A7F4ADDCFB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,12 +217,76 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C5D7CEB2107D96300BB152C /* LaunchScreen.storyboard in Resources */,
+				8CCCF0BE2107E16F00BC8EF4 /* GoogleService-Info.plist in Resources */,
 				8C5D7CE82107D96300BB152C /* Assets.xcassets in Resources */,
 				8C5D7CE62107D96100BB152C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07D5BC5EEDCCCC6F5DA745D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Misdeed-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2EE1BD044D5049ECA79BCF58 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Misdeed/Pods-Misdeed-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Misdeed/Pods-Misdeed-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFEF3EC03F6FD5A7F4ADDCFB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Misdeed/Pods-Misdeed-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Misdeed/Pods-Misdeed-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8C5D7CD92107D96100BB152C /* Sources */ = {
@@ -278,6 +436,7 @@
 		};
 		8C5D7CF02107D96300BB152C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 898733CB9AF750E46D770250 /* Pods-Misdeed.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -286,7 +445,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Misdeed;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kt.Misdeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -295,6 +454,7 @@
 		};
 		8C5D7CF12107D96300BB152C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25B46BCA28FF6E2D77F7E45F /* Pods-Misdeed.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -303,7 +463,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.Misdeed;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kt.Misdeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
