@@ -7,17 +7,27 @@
 //
 
 import UIKit
+import CoreLocation
 import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var locationManager: CLLocationManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        locationManager = CLLocationManager()
+        locationManager?.requestWhenInUseAuthorization()
+        
+        let storyboard = UIStoryboard(name: "MapHomeView", bundle: .main)
+        if let initialViewController = storyboard.instantiateInitialViewController() {
+            window?.rootViewController = initialViewController
+            window?.makeKeyAndVisible()
+        }
         return true
     }
 
