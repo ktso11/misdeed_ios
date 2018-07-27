@@ -10,5 +10,7 @@ pod 'Firebase/Auth'
 pod 'FirebaseUI/Auth'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
+pod 'SwiftyJSON'
+pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
 
 end
