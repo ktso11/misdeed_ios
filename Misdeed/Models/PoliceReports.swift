@@ -14,16 +14,18 @@ import MapKit
 class Place: NSObject, MKAnnotation {
 //    let category: String
 //    let descript: String
-//    let date: String
-//    let address: String
+    let date: String
+    let address: String
     let title: String?
     let subtitle: String?
     let coordinate: CLLocationCoordinate2D
     
-    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D) {
+    init(title: String, subtitle: String, date: String, address: String, coordinate: CLLocationCoordinate2D) {
         self.title = title
         self.subtitle = subtitle
         self.coordinate = coordinate
+                self.date = date
+                self.address = address
     }
 //    init(category: String, descript: String, date: String, address: String, coordinate: CLLocationCoordinate2D) {
 //        self.category = category
@@ -34,7 +36,6 @@ class Place: NSObject, MKAnnotation {
 //    }
     
 }
-
 
 //self.category = json["category"].stringValue
 //self.description = json["descript"].stringValue
