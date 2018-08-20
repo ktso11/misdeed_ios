@@ -8,24 +8,30 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 import Alamofire
 import SwiftyJSON
 import MapKit
+import FirebaseDatabase
 
 class MapHomeViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate {
     
-
+    // MARK: - IBOutlets
+    @IBOutlet weak var addIncidentReportViewButton: UIButton!
     @IBOutlet weak var showPoliceIncidentsButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
-
-
+    @IBOutlet weak var showUserReportsButton: UIButton!
+    
+    // MARK: - Properties
     var locationManager: CLLocationManager = CLLocationManager()
     var startLocation: CLLocation!
     var regionRadius: CLLocationDistance = 7000
     var policeReports: [Place] = []
     var resultSearchController:UISearchController? = nil
+//    var ref:DatabaseReference?
+    var userReports: [UserReports] = []
     
-    
+    // MARK: - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 //        mapSearchBar.delegate = self
@@ -52,14 +58,13 @@ class MapHomeViewController: UIViewController, UISearchBarDelegate, CLLocationMa
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
+        
         //search bar tutorial ends here...
         
         
         Networking.getPoliceReports { (json) in
-            
             let count = json.count
             for index in 0 ... count - 1 {
-                
                 let title = json[index]["category"].stringValue
                 let subtitle = json[index]["descript"].stringValue
                 let date = json[index]["date"].stringValue
@@ -70,24 +75,17 @@ class MapHomeViewController: UIViewController, UISearchBarDelegate, CLLocationMa
             
                 let newReport = Place(title: title, subtitle: subtitle, date: date, address: address, coordinate: coordinate)
                 self.policeReports.append(newReport)
-//                let category = json[index]["category"].stringValue
-//                let descriptiion = json[index]["descript"].stringValue
-//                let date = json[index]["date"].stringValue
-//                let address = json[index]["address"].stringValue
-//                let x = json[index]["location"]["coordinates"][0].doubleValue
-//                let y = json[index]["location"]["coordinates"][1].doubleValue
-//                let coordinate = CLLocationCoordinate2D(latitude: x, longitude: y)
-//                
-//                let newReport = PoliceReport(category: category, descript: descriptiion, date: date, address: address, coordinate: coordinate)
-//                self.policeReports.append(newReport)
             }
         }
-//        requestLocationAccess()
         setUpMap()
+        fetchReports()
+     
+    
     }
     
     //Setting Up Search Bar
 
+    // MARK: - Methods
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error:: \(error.localizedDescription)")
     }
@@ -109,12 +107,64 @@ class MapHomeViewController: UIViewController, UISearchBarDelegate, CLLocationMa
     }
 
     
+    func fetchReports() {
+        let reportRef = Database.database().reference().child("userReports")
+        reportRef.observeSingleEvent(of: .value) { (snapshot) in
+            guard let snapShots = snapshot.children.allObjects as? [DataSnapshot] else {
+                return
+            }
+            for snapshot in snapShots {
+                // Looping through the array of snapshots and converting each snapshot into a report
+                guard let report = UserReports(snapshot: snapshot) else {
+                    return assertionFailure("Failed to use snapshot")
+                }
+                // After converting snapshots into reports, append the reports into userReports array
+                self.userReports.append(report)
+            }
+            print("Reports: \(self.userReports.count) found")
+        }
+    }
+    
+    // MARK: - IBActions
+    @IBAction func showUserReportsTapped(_ sender: Any) {
+        print("adrress is \(userReports[1].address)")
+        let dg = DispatchGroup()
+            for report in self.userReports {
+                dg.enter()
+                 let location = report.address
+                let geocoder = CLGeocoder()
+                geocoder.geocodeAddressString(location) {
+                    placemarks, error in
+                    let placemark = placemarks?.first
+                    let lat = placemark?.location?.coordinate.latitude
+                    let lon = placemark?.location?.coordinate.longitude
+                    report.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
+              dg.leave()
+                }
+                dg.notify(queue: .main) {
+                     self.mapView.addAnnotations(self.userReports)
+                }
+            }
+    }
+    
     //Police Report API
     @IBAction func showPoliceIncidentsButtonTapped(_ sender: UIButton) {
         print("show api!")
+        let allReports = policeReports.count
+//        allReports = allReports.sorted(by: {$0.date.compare($1.date) == .orderedDescending
+
+        let sortedReport = policeReports.sorted(by: {$0.dateInterval! > $1.dateInterval!})
+        
         DispatchQueue.main.async {
-            for x in 0 ... 3 {
-                self.mapView.addAnnotation(self.policeReports[x])
+            for report in self.policeReports {
+             
+                if report.dateInterval! <= 90 {
+                     self.mapView.addAnnotations(self.policeReports)
+                }
+                
+                
+               
+//                self.mapView.addAnnotation(self.policeReports[x])
             }
             self.mapView.showAnnotations(self.mapView.annotations, animated: true)
         }
@@ -135,8 +185,7 @@ extension MapHomeViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
-        }
-        else {
+        } else {
             let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotationView") ?? MKAnnotationView()
             annotationView.image = #imageLiteral(resourceName: "red-pin")
             annotationView.canShowCallout = true
@@ -145,33 +194,44 @@ extension MapHomeViewController: MKMapViewDelegate {
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDetailsSegue" {
-//            let vc = segue.destination as! DetailViewController
-//            vc.addressLabel.text =
-//        }
-//
-//    }
-  
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl ){
         if control == view.rightCalloutAccessoryView {
-//            performSegue(withIdentifier: "showDetailsSegue", sender: self)
+        }
+        
+        if let annView = view.annotation as? Place  {
+
+            let storyboard = UIStoryboard(name: "MapHomeView", bundle: .main)
+            let detailViewController = storyboard.instantiateViewController(withIdentifier: "details") as! DetailViewController
+            detailViewController.address = annView.address
+            detailViewController.date = annView.date
+            detailViewController.descript = annView.title!
+            detailViewController.category = annView.subtitle!
+           
+            self.navigationController?.pushViewController(detailViewController, animated: true)
+        } else if let annView = view.annotation as? UserReports {
+            
+            let storyboard = UIStoryboard(name: "MapHomeView", bundle: .main)
+            let detailViewController = storyboard.instantiateViewController(withIdentifier: "details") as! DetailViewController
+            detailViewController.address = annView.address
+            detailViewController.date = annView.date
+            detailViewController.descript = annView.descript
+            detailViewController.category = annView.category!
+            
+            self.navigationController?.pushViewController(detailViewController, animated: true)
             
             
         }
-        // create segue in storyboard
-        // call prepare for segue in this method (refer to stackoverflow post
-        // use the prepareforsegue method to pass on appropriate data
-
-        let annView = view.annotation as! Place //???
-        let storyboard = UIStoryboard(name: "MapHomeView", bundle: .main)
-        let detailViewController = storyboard.instantiateViewController(withIdentifier: "details") as! DetailViewController
-        detailViewController.address = annView.address
-        detailViewController.date = annView.date
-        detailViewController.descript = annView.title!
-        detailViewController.category = annView.subtitle!
-        
-        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
-
 }
+
+extension String{
+    func toDate() -> Date?{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy'-'MM'-'dd"
+        return dateFormatter.date(from: self)
+    }
+}
+
+
+
+

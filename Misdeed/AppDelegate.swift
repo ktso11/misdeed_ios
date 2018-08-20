@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locationManager = CLLocationManager()
         locationManager?.requestWhenInUseAuthorization()
         
-//        let storyboard = UIStoryboard(name: "MapHomeView", bundle: .main)
-        let storyboard = UIStoryboard(name: "LoginView", bundle: .main)
+        let storyboard = UIStoryboard(name: "MapHomeView", bundle: .main)
+//        let storyboard = UIStoryboard(name: "LoginView", bundle: .main)
         if let initialViewController = storyboard.instantiateInitialViewController() {
             window?.rootViewController = initialViewController
             window?.makeKeyAndVisible()

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C132AF3211237B90096B773 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C132AF2211237B90096B773 /* UserService.swift */; };
 		8C132AF521124B0E0096B773 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C132AF421124B0E0096B773 /* Constants.swift */; };
+		8C132AF721126B6C0096B773 /* ReportIncidentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C132AF621126B6C0096B773 /* ReportIncidentViewController.swift */; };
 		8C48DFF8210A65B60007480D /* PoliceReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C48DFF7210A65B60007480D /* PoliceReports.swift */; };
 		8C48DFFA210A898E0007480D /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C48DFF9210A898E0007480D /* Networking.swift */; };
 		8C48DFFC210B9EDA0007480D /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C48DFFB210B9EDA0007480D /* LocationSearchTable.swift */; };
@@ -26,6 +27,7 @@
 		8CCCF0C02108EBE000BC8EF4 /* MapHomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CCCF0BF2108EBE000BC8EF4 /* MapHomeView.storyboard */; };
 		8CCCF0C22108ECD900BC8EF4 /* MapHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCCF0C12108ECD900BC8EF4 /* MapHomeViewController.swift */; };
 		8CCCF0C42108F28800BC8EF4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCCF0C32108F28800BC8EF4 /* MapKit.framework */; };
+		8CED70542114CAB30064A033 /* userReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CED70532114CAB30064A033 /* userReports.swift */; };
 		BC88810240144E2CB331C4DA /* Pods_Misdeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1963D117AB959514FEDB4FB /* Pods_Misdeed.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,7 @@
 		898733CB9AF750E46D770250 /* Pods-Misdeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Misdeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Misdeed/Pods-Misdeed.debug.xcconfig"; sourceTree = "<group>"; };
 		8C132AF2211237B90096B773 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		8C132AF421124B0E0096B773 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8C132AF621126B6C0096B773 /* ReportIncidentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIncidentViewController.swift; sourceTree = "<group>"; };
 		8C48DFF7210A65B60007480D /* PoliceReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliceReports.swift; sourceTree = "<group>"; };
 		8C48DFF9210A898E0007480D /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		8C48DFFB210B9EDA0007480D /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
@@ -53,6 +56,7 @@
 		8CCCF0BF2108EBE000BC8EF4 /* MapHomeView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapHomeView.storyboard; sourceTree = "<group>"; };
 		8CCCF0C12108ECD900BC8EF4 /* MapHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHomeViewController.swift; sourceTree = "<group>"; };
 		8CCCF0C32108F28800BC8EF4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8CED70532114CAB30064A033 /* userReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userReports.swift; sourceTree = "<group>"; };
 		D1963D117AB959514FEDB4FB /* Pods_Misdeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Misdeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -112,6 +116,7 @@
 				8C48DFFD210FCEB90007480D /* DetailViewController.swift */,
 				8C6923722111277C001117A8 /* LoginViewController.swift */,
 				8C69237621122BBE001117A8 /* CreateUsernameViewController.swift */,
+				8C132AF621126B6C0096B773 /* ReportIncidentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 			children = (
 				8C48DFF7210A65B60007480D /* PoliceReports.swift */,
 				8C69237421122543001117A8 /* User.swift */,
+				8CED70532114CAB30064A033 /* userReports.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 			files = (
 				8CCCF0C22108ECD900BC8EF4 /* MapHomeViewController.swift in Sources */,
 				8C48DFFA210A898E0007480D /* Networking.swift in Sources */,
+				8C132AF721126B6C0096B773 /* ReportIncidentViewController.swift in Sources */,
 				8C48DFF8210A65B60007480D /* PoliceReports.swift in Sources */,
 				8C48DFFC210B9EDA0007480D /* LocationSearchTable.swift in Sources */,
 				8C6923732111277C001117A8 /* LoginViewController.swift in Sources */,
@@ -353,6 +360,7 @@
 				8C132AF3211237B90096B773 /* UserService.swift in Sources */,
 				8C5D7CE32107D96100BB152C /* ViewController.swift in Sources */,
 				8C5D7CE12107D96100BB152C /* AppDelegate.swift in Sources */,
+				8CED70542114CAB30064A033 /* userReports.swift in Sources */,
 				8C69237721122BBE001117A8 /* CreateUsernameViewController.swift in Sources */,
 				8C48DFFE210FCEB90007480D /* DetailViewController.swift in Sources */,
 				8C132AF521124B0E0096B773 /* Constants.swift in Sources */,
@@ -501,6 +509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R76QPR3V4G;
 				INFOPLIST_FILE = "$(SRCROOT)/Misdeed/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -519,6 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R76QPR3V4G;
 				INFOPLIST_FILE = "$(SRCROOT)/Misdeed/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

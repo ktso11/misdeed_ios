@@ -12,13 +12,12 @@ import MapKit
 
 
 class Place: NSObject, MKAnnotation {
-//    let category: String
-//    let descript: String
     let date: String
     let address: String
     let title: String?
     let subtitle: String?
     let coordinate: CLLocationCoordinate2D
+    var dateInterval: Int?
     
     init(title: String, subtitle: String, date: String, address: String, coordinate: CLLocationCoordinate2D) {
         self.title = title
@@ -26,18 +25,21 @@ class Place: NSObject, MKAnnotation {
         self.coordinate = coordinate
                 self.date = date
                 self.address = address
+        
+        super.init()
+        
+        self.dateInterval = datePassed()
     }
-//    init(category: String, descript: String, date: String, address: String, coordinate: CLLocationCoordinate2D) {
-//        self.category = category
-//        self.descript = descript
-//        self.date = date
-//        self.address = address
-//        self.coordinate = coordinate
-//    }
+  
     
+     private func datePassed() -> Int?{
+        let stringdate = self.date
+        let slicedDate = stringdate.components(separatedBy: "T")
+        let cleanStringDate = slicedDate.first
+        let date = cleanStringDate?.toDate()
+        let interval = Calendar.current.dateComponents([.day], from: date!, to: Date()).day
+        return interval
+    }
 }
 
-//self.category = json["category"].stringValue
-//self.description = json["descript"].stringValue
-//self.date = json["date"].stringValue
-//self.address = json["address"].stringValue
+
